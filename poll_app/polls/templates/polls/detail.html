@@ -1,12 +1,23 @@
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+</html>
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
-    <legend><h1>{{ question.question_text }}</h1></legend>
+    <legend class="col-sm-12 col-md-12 col-lg-6 pb-4"><h1>{{ question.question_text }}</h1></legend>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     {% for choice in question.choice_set.all %}
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
         <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
     {% endfor %}
 </fieldset>
-<input type="submit" value="Vote">
+<input type="submit" value="Vote" class="btn btn-primary mt-2">
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
 </form>
