@@ -6,18 +6,22 @@
   {% bootstrap_javascript %}
 </head>
 </html>
+
+
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
-<fieldset>
-    <legend class="col-sm-12 col-md-12 col-lg-6 pb-4"><h1>{{ question.question_text }}</h1></legend>
+<div style="min-width: 0;padding: 80px;margin: auto;">
+<fieldset >
+    <legend><h1 class="col-sm-12 col-md-12 col-lg-6 pb-4">{{ question.question_text }}</h1></legend>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     {% for choice in question.choice_set.all %}
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
         <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
     {% endfor %}
 </fieldset>
-<input type="submit" value="Vote" class="btn btn-primary mt-2">
+<input style=" font-weight: bold;  width: 80px; background-color: rgb(55, 10, 202); text-decoration-color: aliceblue; text-decoration-thickness: 50px;" type="submit" value="Vote" class="btn btn-primary mt-4">
 {% load static %}
+</div>
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 </form>
