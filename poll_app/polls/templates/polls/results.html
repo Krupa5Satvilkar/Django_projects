@@ -6,9 +6,9 @@
   {% bootstrap_javascript %}
 </head>
 </html>
+<div style="min-width: 0;padding: 80px;margin: auto;">
 <h1 class="col-sm-12 col-md-12 col-lg-6 pb-4">
     {{ question.question_text }}</h1>
-
 <ul>
 {% for choice in question.choice_set.all %}
     <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
@@ -18,4 +18,5 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
-<a class="btn btn-primary mt-2" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<a style=" width: 100px; font-weight: bold; background-color: rgb(55, 10, 202); text-decoration-color: aliceblue; text-decoration-thickness: 100px;" class="btn btn-primary mt-4" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+</div>
