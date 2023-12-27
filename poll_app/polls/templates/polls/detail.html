@@ -6,6 +6,8 @@
   {% bootstrap_javascript %}
 </head>
 </html>
+
+
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <div style="min-width: 0;padding: 80px;margin: auto;">
