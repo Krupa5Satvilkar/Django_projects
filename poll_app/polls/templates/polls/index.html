@@ -11,15 +11,16 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
-<div class="container" class="col-sm-12 col-md-12 col-lg-6 pb-4">
+<div style="min-width: 0;padding: 80px;margin: auto;">
 {% if latest_question_list %}
-    <ul><h1 class="display-4 font-weight-bold"></h1>
+    <ul class="col-sm-12 col-md-12 col-lg-6 pb-4"><h1 ></h1>
     {% for question in latest_question_list %}
-    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    <li style="font-weight: 500; font-size: large; " ><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
     </ul></h1>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+<a style=" width: 100px; font-weight: bold; background-color: rgb(55, 10, 202); text-decoration-color: aliceblue; text-decoration-thickness: 100px;" class="btn btn-primary mt-2" href="http://localhost:8000/admin/login/">Admin Login</a>
 </div>
-<a class="btn btn-primary mt-2" href="http://localhost:8000/admin/login/">Admin Login</a>
